@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .calculator {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .calculator input, .calculator select, .calculator button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .calculator input[type="number"] {
+            width: calc(50% - 22px);
+            display: inline-block;
+        }
+        .calculator select {
+            width: calc(100% - 22px);
+        }
+        .calculator button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .calculator button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Simple Calculator</h1>
+        <form id="calcForm">
+            <input type="number" id="number1" placeholder="Enter first number" required>
+            <input type="number" id="number2" placeholder="Enter second number" required>
+            <select id="operator">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value=""></option>
+                <option value="/">/</option>
+            </select>
+            <button type="submit">Calculate</button>
+        </form>
+        <div class="result">
+            <p>Solution is: <span id="demo"></span></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('calcForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const number1 = parseFloat(document.getElementById('number1').value);
+            const number2 = parseFloat(document.getElementById('number2').value);
+            const operator = document.getElementById('operator').value;
+            let result;
+
+            if (operator === '+') {
+                result = number1 + number2;
+            } else if (operator === '-') {
+                result = number1 - number2;
+            } else if (operator === '*') {
+                result = number1 * number2;
+            } else if (operator === '/') {
+                result = number1 / number2;
+            }
+
+            document.getElementById('demo').textContent = result;
+        });
+    </script>
+</body>
+</html>
